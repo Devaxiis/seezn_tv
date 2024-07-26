@@ -14,9 +14,11 @@ dependencies:
   flutter:
     sdk: flutter
 
-
-
   cupertino_icons: ^1.0.6
+  google_nav_bar: ^5.0.6
+  video_player: ^2.9.1
+  audio_video_progress_bar: ^2.0.3
+  bloc: ^8.1.4
 
 dev_dependencies:
   flutter_test:
