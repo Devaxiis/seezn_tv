@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:seezn_tv_app/src/config/theme/theme.dart';
 import 'package:seezn_tv_app/src/presentation/ui/splash_screen.dart';
+import 'package:seezn_tv_app/src/utils/app_color.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -7,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(useMaterial3: true),
+      theme: Apptheme.dark,
       debugShowCheckedModeBanner: false,
       home: const SplashScreen(),
     );

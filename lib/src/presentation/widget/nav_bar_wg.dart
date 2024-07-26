@@ -32,11 +32,11 @@ class NavBarWg extends StatelessWidget {
               ),
               GButton(
                 icon: Icons.search_rounded,
-                text: 'Likes',
+                text: 'Search',
               ),
               GButton(
                 icon: Icons.bookmark,
-                text: 'Search',
+                text: 'Watched',
               ),
               GButton(
                 icon: Icons.person,
