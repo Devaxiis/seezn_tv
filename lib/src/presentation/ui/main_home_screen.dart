@@ -6,6 +6,7 @@ import 'package:seezn_tv_app/src/presentation/ui/profile_screen.dart';
 import 'package:seezn_tv_app/src/presentation/ui/saved_screen.dart';
 import 'package:seezn_tv_app/src/presentation/ui/search_screen.dart';
 import 'package:seezn_tv_app/src/presentation/widget/nav_bar_wg.dart';
+import 'package:seezn_tv_app/src/utils/app_page.dart';
 
 class MainHomeScreen extends StatefulWidget {
   const MainHomeScreen({super.key});
@@ -21,13 +22,9 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
     return Scaffold(
       backgroundColor: const Color(0xff1f1d2b),
       body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
         controller: controller,
-        children: const [
-          HomeScreen(),
-          SearchScreen(),
-          SavedScreen(),
-          ProfileScreen(),
-        ],
+        children: AppPage.appMainPG,
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(vertical: 14),
