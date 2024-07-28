@@ -20,6 +20,8 @@ sealed class AppPage{
         title: const Text("Seezn TV",style: TextStyle(
           color: AppColor.colorBlueAccent12CDD9,
           fontFamily: "Montserrat",fontWeight: FontWeight.bold),),
-      );      
+      ); 
+
+          
 
 }
