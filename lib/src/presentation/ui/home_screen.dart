@@ -1,13 +1,5 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:seezn_tv_app/src/presentation/widget/carousel_card_wg.dart';
-import 'package:seezn_tv_app/src/presentation/widget/carousel_wg.dart';
-import 'package:seezn_tv_app/src/utils/app_color.dart';
-import 'package:seezn_tv_app/src/utils/app_decoration.dart';
-import 'package:seezn_tv_app/src/utils/app_image.dart';
-import 'package:seezn_tv_app/src/utils/app_page.dart';
-import 'package:seezn_tv_app/src/utils/app_style.dart';
+import 'package:seezn_tv_app/library.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -28,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.colorDark1F1D2B,
-      appBar: AppPage.appBarPG,
+      appBar: AppPage.appBarPG(context),
       body:  SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const Padding(
               padding: EdgeInsets.all(20.0),
-              child: Text("Latest TV Serial",style: AppStyle.mainTrandingST,),
+              child: Text("Latest TV erial",style: AppStyle.mainTrandingST,),
             ),
             SizedBox(
               height: 240,
