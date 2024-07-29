@@ -11,7 +11,7 @@ class CarouselCardWg extends StatelessWidget {
       decoration: BoxDecoration(
           color: AppColor.colorSoft252836,
           image: DecorationImage(image: image,fit: BoxFit.cover),
-          borderRadius: const BorderRadius.all(const Radius.circular(16))
+          borderRadius: const BorderRadius.all( Radius.circular(16))
       ));
   }
 }

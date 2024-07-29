@@ -31,8 +31,8 @@ class NavBarWg extends StatelessWidget {
                 text: 'Home',
               ),
               GButton(
-                icon: Icons.search_rounded,
-                text: 'Search',
+                icon: Icons.movie,
+                text: 'All Movie',
               ),
               GButton(
                 icon: Icons.bookmark,
