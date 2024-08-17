@@ -2,22 +2,18 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:seezn_tv_app/src/config/apis.dart';
-import 'package:seezn_tv_app/src/data/remote/remote.dart';
+import 'package:seezn_tv_app/src/data/remote/network.dart';
 
-
-
-class GetNetwork implements Network{
-
+class GetNetwork implements Network {
   //Backenddan berilgan malumotlarni ochirish uchun method
   @override
-  Future<String?> methodDelete({required String api}) async{
-      Uri url = Uri.https(Apis.baseUrl,api);
+  Future<String?> methodDelete({required String api}) async {
+    Uri url = Uri.https(Apis.baseUrl, api);
     try {
-    
       final response = await http.delete(url);
-      if(response.statusCode >= 200 || response.statusCode <= 201){
-      return response.body;
-      }else{
+      if (response.statusCode >= 200 || response.statusCode <= 201) {
+        return response.body;
+      } else {
         return null;
       }
     } catch (e) {
@@ -27,13 +23,20 @@ class GetNetwork implements Network{
 
   //Backenddan kerakli malumotni olib kelish uchun method
   @override
-  Future<String?> methodGet({required String api,int? id})async {
-      Uri url = Uri.https(Apis.baseUrl,"$api${id ?? ""}",);
-   try {
+  Future<String?> methodGet({required String api, int? id}) async {
+    Uri url = Uri.https(
+      Apis.baseUrl,
+      "$api/${id ?? ""}",
+    );
+    log("Url:::::$url");
+    try {
       final response = await http.get(url);
-      if(response.statusCode >= 200 && response.statusCode <= 299){
-          return utf8.decoder.convert(response.bodyBytes);
-      }else{
+      if (response.statusCode >= 200 && response.statusCode <= 299) {
+        print("----------");
+        log("working...");
+        print("----------");
+        return response.body;
+      } else {
         return null;
       }
     } catch (e) {
@@ -43,40 +46,47 @@ class GetNetwork implements Network{
 
   //Backendga kerakli malumotni kiritish uchun kerak.
   @override
-  Future<String?> methodPost({required String api, required String data,}) async{
-      Uri url = Uri.https(Apis.baseUrl,api,);
+  Future<String?> methodPost({
+    required String api,
+    required String data,
+  }) async {
+    Uri url = Uri.https(
+      Apis.baseUrl,
+      api,
+    );
     try {
-      final response = await http.post(url,encoding: Encoding.getByName("UTF-8"));
+      final response =
+          await http.post(url, encoding: Encoding.getByName("UTF-8"));
       log(response.body);
       log("${response.statusCode}");
-      if(response.statusCode >= 200 && response.statusCode <= 299){
+      if (response.statusCode >= 200 && response.statusCode <= 299) {
         return response.body;
-      }else{
+      } else {
         return null;
       }
     } catch (e) {
       throw Exception("Method Post ERROR:===> $e <===");
     }
-    }
+  }
 
   @override
-  Future<String?> methodSearch({required String api, required Map<String, dynamic> query})async {
+  Future<String?> methodSearch(
+      {required String api, required Map<String, dynamic> query}) async {
     log("${Apis.baseUrl}$api$query");
-    Uri url = Uri.https(Apis.baseUrl,api,query);
+    Uri url = Uri.https(Apis.baseUrl, api, query);
     log("Url=== $url");
     try {
       final response = await http.get(url);
       log("-------------");
       log(response.body);
       log("-------------");
-      if(response.statusCode >= 200 && response.statusCode <= 299){
+      if (response.statusCode >= 200 && response.statusCode <= 299) {
         return utf8.decoder.convert(response.bodyBytes);
-      }else{
+      } else {
         return null;
       }
     } catch (e) {
       throw Exception("Method Get ERROR:===> $e <===");
     }
   }
-
 }

@@ -16,6 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(const Duration(seconds: 3)).then(
         (_){
+          // ignore: use_build_context_synchronously
           context.navigateReplacement(const MainHomeScreen());
         }
     );

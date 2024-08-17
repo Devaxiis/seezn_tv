@@ -17,13 +17,18 @@ dependencies:
   cupertino_icons: ^1.0.6
   # For Bottom Nav Bar
   google_nav_bar: ^5.0.6
-  # For video play
-  video_player: ^2.9.1
   # For video progress
   audio_video_progress_bar: ^2.0.3
   # For video ads
-  carousel_slider: ^4.2.1
+  # For Network connection
   http: ^1.2.2
+  # For video playing
+  flick_video_player: ^0.9.0
+  video_player: ^2.9.1
+  carousel_slider: ^5.0.0
+  # For image opened
+  cached_network_image: ^3.4.1
+ 
 
 dev_dependencies:
   flutter_test:

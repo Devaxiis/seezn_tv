@@ -1,13 +1,20 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
+
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:seezn_tv_app/src/domain/models/all_video/results_data_ms.dart';
 
 import '../../../library.dart';
 
+// ignore: must_be_immutable
 class MainLatestCardWg extends StatelessWidget {
-  Function() onTab;
-  MainLatestCardWg({super.key, required this.onTab});
+  final Function() onTab;
+  final ResultsDataMs data;
+  const MainLatestCardWg({super.key, required this.onTab, required this.data});
 
   @override
   Widget build(BuildContext context) {
+    print("----------");
+    log("${data.poster_mobile}");
     return InkWell(
       onTap: () => onTab(),
       child: Container(
@@ -27,10 +34,17 @@ class MainLatestCardWg extends StatelessWidget {
                   child: SizedBox(
                       height: MediaQuery.sizeOf(context).height,
                       width: MediaQuery.sizeOf(context).width,
-                      child: const Image(
-                        image: AppImages.spidermanImg,
+                      child: CachedNetworkImage(
+                        imageUrl: data.poster_mobile,
                         fit: BoxFit.cover,
-                      )),
+                        placeholder: (context, url) => const Center(
+                          child: CircularProgressIndicator.adaptive()),
+                        )
+                      // Image.network(
+                      //   data.poster_mobile,
+                      //   fit: BoxFit.cover,
+                      // ),
+                      ),
                 )),
             Expanded(
                 child: DefaultTextStyle(
@@ -38,14 +52,14 @@ class MainLatestCardWg extends StatelessWidget {
               child: SizedBox(
                 height: MediaQuery.sizeOf(context).height,
                 width: MediaQuery.sizeOf(context).width,
-                child: const Padding(
+                child:  Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text("Salom"),
-                      Text("Narx"),
+                      Text("${data.title}"),
+                      Text("${data.release_date}"),
                     ],
                   ),
                 ),

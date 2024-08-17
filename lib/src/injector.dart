@@ -1,6 +1,6 @@
 
 import 'package:seezn_tv_app/src/data/remote/remote_db.dart';
-import 'package:seezn_tv_app/src/domain/repository/remote/remote.dart';
+import 'package:seezn_tv_app/src/domain/repository/remote/user_repository.dart';
 import 'package:seezn_tv_app/src/domain/repository/remote/remote_repo.dart';
 
 
