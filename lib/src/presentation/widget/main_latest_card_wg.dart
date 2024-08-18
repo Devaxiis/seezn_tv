@@ -58,8 +58,8 @@ class MainLatestCardWg extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text("${data.title}"),
-                      Text("${data.release_date}"),
+                      Text("${data.title}",style: TextStyle(),overflow: TextOverflow.ellipsis,),
+                      Text("${data.release_date}",overflow: TextOverflow.ellipsis,),
                     ],
                   ),
                 ),

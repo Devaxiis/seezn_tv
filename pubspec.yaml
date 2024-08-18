@@ -30,6 +30,9 @@ dependencies:
   cached_network_image: ^3.4.1
   # For rating
   flutter_rating_stars: ^1.1.0
+  flutter_bloc: ^8.1.6
+  bloc: ^8.1.4
+  equatable: ^2.0.5
  
 
 dev_dependencies:
