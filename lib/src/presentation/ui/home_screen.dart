@@ -32,78 +32,86 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.colorDark1F1D2B,
-      appBar: AppPage.appBarPG(
-          context: context, title: "Seezn TV", rightIcon: true),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Padding(
-              padding: EdgeInsets.all(20.0),
-              child: Text(
-                "Trending",
-                style: AppStyle.mainTrandingST,
+    return RefreshIndicator(
+      onRefresh: () {
+        setState(() {});
+        return repository.getAllData(Apis.api).then((value) {
+                fetchData = value!.results;
+              });
+      },
+      child: Scaffold(
+        backgroundColor: AppColor.colorDark1F1D2B,
+        appBar: AppPage.appBarPG(
+            context: context, title: "Seezn TV", rightIcon: true),
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Text(
+                  "Trending",
+                  style: AppStyle.mainTrandingST,
+                ),
               ),
-            ),
-            CarouselWg(items: items),
-            const Padding(
-              padding: EdgeInsets.all(20.0),
-              child: Text(
-                "Latest Movies",
-                style: AppStyle.mainTrandingST,
+              CarouselWg(items: items),
+              const Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Text(
+                  "Latest Movies",
+                  style: AppStyle.mainTrandingST,
+                ),
               ),
-            ),
-            SizedBox(
-              height: 240,
-              width: MediaQuery.sizeOf(context).width,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: fetchData.length,
-                  itemBuilder: (_, index) {
-                    return Padding(
-                      padding: EdgeInsets.only(left: 20),
-                      child: MainLatestCardWg(
-                        data: fetchData[index],
-                        onTab: () {
-                          context.navigatePush(DetailScreen(
-                            videoData: fetchData[index],
-                          ));
-                        },
-                      ),
-                    );
-                  }),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(20.0),
-              child: Text(
-                "Latest TV Serial",
-                style: AppStyle.mainTrandingST,
+              SizedBox(
+                height: 240,
+                width: MediaQuery.sizeOf(context).width,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: fetchData.length,
+                    itemBuilder: (_, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: MainLatestCardWg(
+                          data: fetchData[index],
+                          onTab: () {
+                            context.navigatePush(DetailScreen(
+                              videoData: fetchData[index],
+                            ));
+                          },
+                        ),
+                      );
+                    }),
               ),
-            ),
-            SizedBox(
-              height: 240,
-              width: MediaQuery.sizeOf(context).width,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: fetchData.length,
-                  itemBuilder: (_, index) {
-                   
-                    return Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: MainLatestCardWg(
-                        data: fetchData[index],
-                        onTab: () {
-                          context.navigatePush(DetailScreen(
-                            videoData: fetchData[index],
-                          ));
-                        },
-                      ),
-                    );
-                  }),
-            )
-          ],
+              const Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Text(
+                  "Latest TV Serial",
+                  style: AppStyle.mainTrandingST,
+                ),
+              ),
+              SizedBox(
+                height: 240,
+                width: MediaQuery.sizeOf(context).width,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: fetchData.length,
+                    itemBuilder: (_, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: MainLatestCardWg(
+                          data: fetchData[index],
+                          onTab: () {
+                            context.navigatePush(DetailScreen(
+                              videoData: fetchData[index],
+                            ));
+                          },
+                        ),
+                      );
+                    }),
+              )
+            ],
+          ),
         ),
       ),
     );

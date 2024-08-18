@@ -28,6 +28,8 @@ dependencies:
   carousel_slider: ^5.0.0
   # For image opened
   cached_network_image: ^3.4.1
+  # For rating
+  flutter_rating_stars: ^1.1.0
  
 
 dev_dependencies:
